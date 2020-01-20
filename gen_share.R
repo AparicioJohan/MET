@@ -5,7 +5,10 @@
   data <- as.data.frame(data)
   nomb <- c(genotype,env)
   
-  if(sum(nomb%in%names(data))!=2) stop("columns not found in the data")
+  if(sum(nomb%in%names(data))!=2){
+    message("columns not found in the data")
+    return()
+   }
   
   data=type.convert(data)
   data[,genotype] <- as.factor(data[,genotype])
