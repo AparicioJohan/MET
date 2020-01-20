@@ -48,7 +48,7 @@
   
   # windows()
   try(heatmap.2(share, scale = "none", col = terrain.colors(100),
-            trace = "none", density.info = "none"),silent = T)
+            trace = "none", density.info = "none", margins = c(15,15)),silent = T)
   
   return(share)
   
