@@ -1,6 +1,6 @@
  require("gplots")
 
-"gen_share" <- function(data=NULL, genotype="line", env="Exp"){
+"gen_share" <- function(data=NULL, genotype="line", env="Exp", response=NA){
 
   data <- as.data.frame(data)
   nomb <- c(genotype,env)
@@ -13,6 +13,8 @@
   data=type.convert(data)
   data[,genotype] <- as.factor(data[,genotype])
   data[,env] <- as.factor(data[,env])
+ 
+  if(!is.na(response)) data <- data[ !is.na(data[,response]) , ]
 
   nexp <- nlevels(data[,env] ) #    experiments
   ngen <- nlevels(data[,genotype] ) #   genotypes
