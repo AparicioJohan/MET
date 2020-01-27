@@ -1,6 +1,6 @@
  require("gplots")
 
-"gen_share" <- function(data=NULL, genotype="line", env="Exp", response=NA){
+"gen_share" <- function(data=NULL, genotype="line", env="Exp", response=NA , plot=TRUE){
 
   data <- as.data.frame(data)
   nomb <- c(genotype,env)
@@ -52,9 +52,10 @@
   
   
   # windows()
+ if(isTRUE(plot)){
   try(heatmap.2(share, scale = "none", col = terrain.colors(100),
             trace = "none", density.info = "none", margins = c(15,15)),silent = T)
-  
+  }
   return(share)
   
 }
