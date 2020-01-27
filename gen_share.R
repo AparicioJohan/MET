@@ -24,7 +24,6 @@
   colnames(share) <- levels(data[,env] )
   
   # share by Experiment
-  pb <- txtProgressBar(min = 0, max = nexp, style = 3)
   for (i in 1:nexp) {
     
     eitmp <- levels( droplevels( subset(data, get(env)==colnames(share)[i]) )[,genotype]  )
@@ -33,10 +32,7 @@
       ejtmp <- levels( droplevels( subset(data, get(env)==colnames(share)[j]) )[,genotype] )
       
       share[i,j] <- sum(eitmp%in%ejtmp)
-      
     }
-    
-    setTxtProgressBar(pb, i)
   }
   
   M <-  share
