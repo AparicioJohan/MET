@@ -24,12 +24,13 @@
   colnames(share) <- levels(data[,env] )
   
   # share by Experiment
+ 
+ ind = which(names(data)%in%env)
   for (i in 1:nexp) {
-    
-    eitmp <- levels( droplevels( subset(data, get(env)==colnames(share)[i]) )[,genotype]  )
+    eitmp <- levels( droplevels( data[data[,ind]==colnames(share)[i],] )[,genotype]  )
     
     for (j in 1:nexp) {
-      ejtmp <- levels( droplevels( subset(data, get(env)==colnames(share)[j]) )[,genotype] )
+      ejtmp <- levels( droplevels( data[data[,ind]==colnames(share)[j],] )[,genotype] )
       
       share[i,j] <- sum(eitmp%in%ejtmp)
     }
